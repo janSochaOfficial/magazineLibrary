@@ -1,0 +1,5 @@
+<div *ngFor="let name of getNames();">
+  <a [routerLink]="'/lista/' + name" >
+    <img [src]="getSrc(name)" alt="">
+  </a>
+</div>
