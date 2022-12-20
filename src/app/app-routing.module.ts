@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router'
 import { MainListComponent } from './main-list/main-list.component';
 import { MagazineShowcaseComponent } from './magazine-showcase/magazine-showcase.component';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: 'lista', component: MainListComponent},
+  {path: 'lista', component: MainListComponent, pathMatch: "full"},
   {path: 'lista/:name', component: MagazineShowcaseComponent},
   {path: 'lista/:name/:year', component: MagazineShowcaseComponent},
   {path: '', component: LoginComponent}

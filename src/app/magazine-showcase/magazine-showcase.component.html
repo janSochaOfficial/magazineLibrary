@@ -9,6 +9,17 @@
   </a>
 </ul>
 
-<table *ngFor="let magazine of magazineCollection">
-  <magazine-details [magazineData]="magazine"></magazine-details>
+<table *ngIf="actYear != ''">
+  <thead>
+    <tr>
+      <th>Strona Tytułowa</th>
+      <th>plik</th>
+      <th>pismo</th>
+      <th>darczyńcy</th>
+    </tr>
+  </thead>
+
+  <magazine-details *ngFor="let magazine of magazineCollection" [magazineData]="magazine" [magazineName]="name"></magazine-details>
+
+
 </table>

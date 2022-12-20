@@ -20,20 +20,24 @@ export class MagazineShowcaseComponent {
   actYear: string = ""
   magazineCollection: Array<any> = []
   ngOnInit(): void {
-    this.name = this.route.snapshot.paramMap.get("name")!
-    this.loadYeras()
+    this.route.paramMap.subscribe(params => {
+      this.name = params.get("name")!
+      this.actYear = params.get("year") ?? ""
+      this.loadYeras()
+    });
+
+
   }
 
   async loadYeras(){
-    try{
-      this.years = await this.Xml.getYears(this.name)
-    }
-    catch{
+
+    this.years = await this.Xml.getYears(this.name)
+
+    if (this.years.length == 0){
       this.router.navigate(['/', 'lista'])
       return
     }
 
-    this.actYear = this.route.snapshot.paramMap.get("year") ?? ""
     if (this.actYear == "") return;
 
     this.magazineCollection = await this.Xml.getMagazines(
