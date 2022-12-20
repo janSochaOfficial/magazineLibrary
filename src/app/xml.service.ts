@@ -7,7 +7,9 @@ import { NgxXmlToJsonService } from 'ngx-xml-to-json';
 })
 export class XmlService {
 
-  constructor(private httpClient:HttpClient ,private ngxXmlToJsonService: NgxXmlToJsonService){}
+  private json: any = undefined
+  constructor(private httpClient:HttpClient ,private ngxXmlToJsonService: NgxXmlToJsonService){
+  }
 
   async getData(){
     return this.httpClient.get("../assets/czasopisma.xml", {responseType: "text"}).toPromise()
@@ -21,14 +23,30 @@ export class XmlService {
       attrKey: 'attr', // tag for attr groups
       cdataKey: 'cdata', // tag for cdata nodes (ignored if mergeCDATA is true)
     };
-    const jsonObj = this.ngxXmlToJsonService.xmlToJson(xml, options)
+    this.json = this.ngxXmlToJsonService.xmlToJson(xml, options).czasopisma
 
-    return jsonObj.czasopisma;
+    return this.json;
   }
 
   async getYears(name:string): Promise<Array<string>>{
-    const json = await this.getJson()
-    const text: string = json.lata[name].text;
+    if (this.json == undefined){
+      this.json = await this.getJson()
+    }
+
+    const text: string = this.json.lata[name].text;
     return text.split(",")
+  }
+
+  async getMagazines(name: string, year: string): Promise<Array<any>>{
+    const magazineCollection = this.json[name]
+    const returnArray: Array<any> = []
+    for (const key in magazineCollection){
+      if (key == "text") continue
+      if (magazineCollection[key].attr.rok == year){
+        returnArray.push(magazineCollection[key])
+      }
+    }
+
+  return returnArray
   }
 }
