@@ -15,14 +15,20 @@ export class XmlService {
 
   async getJson(){
     let xml = await this.getData() as string
-    
-    const options = { // set up the default options 
+
+    const options = { // set up the default options
       textKey: 'text', // tag name for text nodes
       attrKey: 'attr', // tag for attr groups
       cdataKey: 'cdata', // tag for cdata nodes (ignored if mergeCDATA is true)
     };
     const jsonObj = this.ngxXmlToJsonService.xmlToJson(xml, options)
-    
+
     return jsonObj.czasopisma;
+  }
+
+  async getYears(name:string): Promise<Array<string>>{
+    const json = await this.getJson()
+    const text: string = json.lata[name].text;
+    return text.split(",")
   }
 }

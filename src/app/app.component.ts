@@ -24,7 +24,6 @@ export class AppComponent {
     return Math.round(Number(this.value) * 1000) / 1000
   }
   onlyNumberKey(s: string, e: KeyboardEvent) {
-    if (s + e.key == "666.666") this.goToList()
     return this.re.test(s + e.key)
   }
   goToList(){

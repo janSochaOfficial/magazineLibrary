@@ -6,8 +6,8 @@ import { MagazineShowcaseComponent } from './magazine-showcase/magazine-showcase
 
 const routes: Routes = [
   {path: 'lista', component: MainListComponent},
-  {path: 'lista/:nazwa', component: MagazineShowcaseComponent}
-
+  {path: 'lista/:name', component: MagazineShowcaseComponent},
+  {path: '', redirectTo: '/lista', pathMatch: "full"}
 ]
 
 @NgModule({
