@@ -9,12 +9,16 @@ import { MainListComponent } from './main-list/main-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MagazineShowcaseComponent } from './magazine-showcase/magazine-showcase.component';
+import { MagazineDetailsComponent } from './magazine-details/magazine-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainListComponent,
-    MagazineShowcaseComponent
+    MagazineShowcaseComponent,
+    MagazineDetailsComponent,
+    LoginComponent
     
   ],
   imports: [

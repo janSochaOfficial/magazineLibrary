@@ -2,9 +2,13 @@
   {{name}}
 </h1>
 <ul *ngFor="let year of years">
-  <a href="">
-    <li>
+  <a [routerLink]="'/lista/' + name + '/' +  year">
+    <li [class.isActive]="isActive(year)">
       {{year}}
     </li>
   </a>
 </ul>
+
+<table *ngFor="let magazine of magazineCollection">
+  <magazine-details [magazineData]="magazine"></magazine-details>
+</table>

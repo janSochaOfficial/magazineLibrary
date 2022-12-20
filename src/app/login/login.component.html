@@ -1,0 +1,7 @@
+<div>
+  <span>Wpisz zarobki z poprzedniego roku</span>
+  <input type="password" [value]="value" #input [(ngModel)]="value" (keypress)="onlyNumberKey(input.value, $event)">
+  <span>PLN</span>
+</div>
+<div>I tak widzimy że twoje zarobki to: {{getVal()}}zł</div>
+
