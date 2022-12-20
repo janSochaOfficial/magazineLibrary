@@ -10,12 +10,7 @@ export class LoginComponent {
   title = 'pipes';
   value = "";
   re = /^(\d+\.?\d*)$/
-  time = new Date()
-  ngOnInit() {
-    setInterval(()=>{
-      this.time = new Date();
-    }, 1000)
-  }
+
 
   getVal(){
     return Math.round(Number(this.value) * 1000) / 1000

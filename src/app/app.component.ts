@@ -11,8 +11,6 @@ export class AppComponent {
 
   constructor(private router: Router){}
   title = 'pipes';
-  value = "";
-  re = /^(\d+\.?\d*)$/
   time = new Date()
   ngOnInit() {
     setInterval(()=>{
@@ -20,14 +18,5 @@ export class AppComponent {
     }, 1000)
   }
 
-  getVal(){
-    return Math.round(Number(this.value) * 1000) / 1000
-  }
-  onlyNumberKey(s: string, e: KeyboardEvent) {
-    return this.re.test(s + e.key)
-  }
-  goToList(){
-    this.router.navigate(['/', 'lista']);
-  }
 
 }
