@@ -1,3 +1,5 @@
+<h1>Wybierz magazyn który chcesz przeglądać</h1>
+
 <div *ngFor="let name of getNames();">
   <a [routerLink]="'/lista/' + name" >
     <img [src]="getSrc(name)" alt="">

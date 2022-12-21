@@ -1,8 +1,67 @@
+@import "../../styles";
 h1 {
   font-size: 2em;
   text-align: center;
 }
 
-magazine-details{
-  display: table-row;
+
+
+:host{
+  width: 90%;
+  max-width: 680px;
+
+  ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+
+    a{
+      display: block;
+      width: fit-content;
+      background: @accentcolor;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: scale 0.3s;
+      &:hover{
+        scale: 1.05;
+      }
+      li {
+        display: block;
+        width: fit-content;
+        padding: 0.2rem 1rem;
+      }
+    }
+  }
+
+  button{
+    font-size: 1.2em;
+    display: block;
+    margin: auto;
+    width: fit-content;
+    padding: 0.2rem 1rem;
+    background: @accentcolor;
+    border-radius: 10px;
+    cursor: pointer;
+    border: solid 2px whitesmoke;;
+    transition: scale 0.3s;
+    &:hover{
+      scale: 1.05;
+    }
+  }
+
+  table{
+    border: 1px solid whitesmoke;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-spacing:0;
+    th{
+      border: 1px solid whitesmoke;
+    }
+  }
 }
+
+

@@ -34,9 +34,10 @@ export class MagazineShowcaseComponent {
     this.years = await this.Xml.getYears(this.name)
 
     if (this.years.length == 0){
-      this.router.navigate(['/', 'lista'])
+      this.goToHome()
       return
     }
+    this.years.push("all")
 
     if (this.actYear == "") return;
 
@@ -50,6 +51,9 @@ export class MagazineShowcaseComponent {
     return year == this.actYear
   }
 
+  goToHome(){
+    this.router.navigate(['/', 'lista'])
+  }
 
 
 }
