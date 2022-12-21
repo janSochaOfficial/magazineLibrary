@@ -33,14 +33,18 @@ export class MagazineShowcaseComponent {
 
     this.years = await this.Xml.getYears(this.name)
 
-    if (this.years.length == 0){
+    if (this.years.length < 0){
       this.goToHome()
       return
     }
     this.years.push("all")
 
-    if (this.actYear == "") return;
-
+    if (this.actYear == ""){
+      return;
+    }
+    if (!this.years.includes(this.actYear))
+      this.router.navigate(['/', 'lista/' + this.name])
+      
     this.magazineCollection = await this.Xml.getMagazines(
       this.name,
       this.actYear

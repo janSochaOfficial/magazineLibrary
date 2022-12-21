@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'lista', component: MainListComponent, pathMatch: "full"},
   {path: 'lista/:name', component: MagazineShowcaseComponent},
   {path: 'lista/:name/:year', component: MagazineShowcaseComponent},
-  {path: '', component: LoginComponent}
+  {path: '', component: LoginComponent},
+  {path: '**', redirectTo: '/lista',}
 ]
 
 @NgModule({
