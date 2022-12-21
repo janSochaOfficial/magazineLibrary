@@ -40,9 +40,11 @@ export class XmlService {
   async getMagazines(name: string, year: string): Promise<Array<any>>{
     const magazineCollection = this.json[name]
     const returnArray: Array<any> = []
+
     for (const key in magazineCollection){
       if (key == "text") continue
-      if (magazineCollection[key].attr.rok == year){
+      if (year == "all") returnArray.push(magazineCollection[key]);
+      else if (magazineCollection[key].attr.rok == year){
         returnArray.push(magazineCollection[key])
       }
     }
