@@ -30,20 +30,25 @@ export class MagazineShowcaseComponent {
   }
 
   async loadYeras(){
+    try{
+      this.years = await this.Xml.getYears(this.name)
 
-    this.years = await this.Xml.getYears(this.name)
-
-    if (this.years.length < 0){
+    }
+    catch{
+      console.log(this.years.length == 0)
       this.goToHome()
       return
     }
+    
     this.years.push("all")
 
     if (this.actYear == ""){
       return;
     }
-    if (!this.years.includes(this.actYear))
-      this.router.navigate(['/', 'lista/' + this.name])
+    if (!this.years.includes(this.actYear)){
+      console.log('lista/' + this.name)
+      this.router.navigate(['/lista/',  this.name])
+    }
       
     this.magazineCollection = await this.Xml.getMagazines(
       this.name,
